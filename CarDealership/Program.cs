@@ -1,7 +1,15 @@
+using CarDealership.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddDbContext<DbContextCarDealer>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DbContextCarDealer")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
