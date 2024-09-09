@@ -16,7 +16,7 @@ namespace CarDealership.Data
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<Store> Stores { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
          
             modelBuilder.Entity<Order>()
