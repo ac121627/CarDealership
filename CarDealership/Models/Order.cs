@@ -10,7 +10,8 @@ namespace CarDealership.Models
         public int OrderId { get; set; }
 
         [Required]
-        public int CustomerId   { get; set; }
+        public int CustomersId   { get; set; }
+        [ForeignKey(nameof(CustomersId))]
         public Customers Customers { get; set; }
 
         
@@ -21,6 +22,8 @@ namespace CarDealership.Models
         [Required]
         public DateTime Date { get; set; }
 
+        public int CarID { get; set; }
         public Car Car { get; set; }
+
     }
 }

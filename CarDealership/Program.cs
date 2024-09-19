@@ -1,11 +1,16 @@
-using CarDealership.Data;
+
 using Microsoft.EntityFrameworkCore;
+using CarDealership.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("CarDealershipContextConnection") ?? throw new InvalidOperationException("Connection string 'CarDealershipContextConnection' not found.");
+
+builder.Services.AddDbContext<CarDealershipContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<CarDealershipUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CarDealershipContext>();
 
 
-builder.Services.AddDbContext<DbContextCarDealer>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DbContextCarDealer")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -27,6 +32,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",

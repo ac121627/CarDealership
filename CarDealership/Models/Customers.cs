@@ -5,7 +5,7 @@ namespace CarDealership.Models
     public class Customers
     {
         [Key]
-        public int Id { get; set; }
+        public int CustomersId { get; set; }
 
         [Required]
         public string FirstName     { get; set; }

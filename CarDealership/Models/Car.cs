@@ -17,7 +17,6 @@ namespace CarDealership.Models
         [Required]
         public string Brand {  get; set; }
 
-
         public int OrderID  { get; set; }
 
         [ForeignKey(nameof(OrderID))]

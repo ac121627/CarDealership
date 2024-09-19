@@ -14,6 +14,5 @@ namespace CarDealership.Models
 
         public ICollection<Staff> Staff { get; set; }
 
-
     }
 }
